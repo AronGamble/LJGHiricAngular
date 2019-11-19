@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HistoryService } from '../../history.service';
+import { EmploymentItem } from 'src/app/Models/employment-item';
 
 @Component({
   selector: 'app-contract',
@@ -8,7 +9,7 @@ import { HistoryService } from '../../history.service';
 })
 export class ContractComponent implements OnInit {
 
-  historyItems: any;
+  historyItems: EmploymentItem[];
 
   constructor(private historyService: HistoryService) { }
 

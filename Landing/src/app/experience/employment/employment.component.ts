@@ -13,15 +13,13 @@ export class EmploymentComponent implements OnInit {
   id: string;
 
   constructor(private route: ActivatedRoute) {
-
-
   }
 
   ngOnInit() {
 
     this.route.params.subscribe(params => {
 
-        alert(params.id);
+      this.id = params.id;
 
     });
 

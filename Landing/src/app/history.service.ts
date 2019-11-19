@@ -27,7 +27,6 @@ export class HistoryService {
             item.startDate,
             item.endDate,
             item.typeOfEmployment
-
           );
         });
       })
@@ -35,4 +34,24 @@ export class HistoryService {
 
   }
 
+  getEmploymentItem(id: string): Observable<EmploymentItem> {
+
+    return this.http.get<EmploymentItem>('https://ljghistoryservice.azurewebsites.net/History/' + id).pipe(
+      map(res => {
+        return new EmploymentItem(
+          res.id,
+          res.companyName,
+          res.location,
+          res.startDate,
+          res.endDate,
+          res.typeOfEmployment
+        );
+      })
+    );
+
+  }
+
+
 }
+
+

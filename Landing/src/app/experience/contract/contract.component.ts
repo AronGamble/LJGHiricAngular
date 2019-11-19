@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoryService } from '../../history.service';
 
 @Component({
   selector: 'app-contract',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContractComponent implements OnInit {
 
-  constructor() { }
+  historyItems: any;
+
+  constructor(private historyService: HistoryService) { }
 
   ngOnInit() {
+
+    this.historyService.getHistory().subscribe((data) => {
+      this.historyItems = data;
+    },
+      err => {
+        alert(err);
+      },
+      () => {}
+    );
+
   }
 
 }

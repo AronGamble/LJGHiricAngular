@@ -13,6 +13,7 @@ import { PasswordForgetComponent } from './password-forget/password-forget.compo
 
 import { registerLocaleData } from '@angular/common';
 import localeUk from '@angular/common/locales/en-GB';
+// import { BackComponent } from './back/back.component';
 
 registerLocaleData(localeUk);
 
@@ -21,7 +22,7 @@ registerLocaleData(localeUk);
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    PasswordForgetComponent
+    PasswordForgetComponent,
   ],
   imports: [
     BrowserModule,

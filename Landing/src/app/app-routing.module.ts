@@ -8,7 +8,7 @@ import { PasswordForgetComponent } from './password-forget/password-forget.compo
 
 const routes: Routes = [
   { path: '', component: LayoutComponent, loadChildren: './pages/pages.module#PagesModule' },
-  { path: 'experience', component: LayoutComponent, loadChildren: './experience/experience.module#ExperienceModule' },
+  { path: 'experience', loadChildren: './experience/experience.module#ExperienceModule' },
   { path: 'login', component: LoginComponent  },
   { path: 'register', component: RegisterComponent  },
   { path: 'password-forget', component: PasswordForgetComponent  }

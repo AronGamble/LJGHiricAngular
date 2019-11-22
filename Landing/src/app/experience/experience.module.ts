@@ -12,6 +12,7 @@ import { BackComponent } from '../back/back.component';
   imports: [
     CommonModule,
     ExperienceRoutingModule
-  ]
+  ],
+  exports: [ContractComponent, PermanentComponent, EmploymentComponent, BackComponent]
 })
 export class ExperienceModule { }

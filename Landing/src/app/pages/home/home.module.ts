@@ -13,7 +13,7 @@ import { ContactComponent } from '../contact/contact.component';
 import { TestiComponent } from '../testi/testi.component';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { ParticlesModule } from 'angular-particle';
-
+import { ExperienceModule } from '../../experience/experience.module';
 import { Index1Component } from './index1/index1.component';
 import { Index2Component } from './index2/index2.component';
 import { Index3Component } from './index3/index3.component';
@@ -34,6 +34,7 @@ import { Index9Component } from './index9/index9.component';
     CommonModule,
     NgxYoutubePlayerModule.forRoot(),
     HomeRoutingModule,
+    ExperienceModule,
     ParticlesModule
   ]
 })

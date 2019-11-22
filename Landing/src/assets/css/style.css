@@ -2,7 +2,7 @@
 * Template Name : Hiric - Responsive Landing Template
 * Version : 1.0.0
 * Created by : Themesbrand
-* File: Main Css 
+* File: Main Css
 */
 
 
@@ -200,7 +200,7 @@ b {
 
 .svg-pattern {
   width: 100%;
-  position: relative; 
+  position: relative;
 }
 
 iframe {
@@ -410,7 +410,7 @@ iframe {
 
 
 /*=======================================
-          5.HOME 
+          5.HOME
   =====================================*/
 
 .bg-home {
@@ -758,9 +758,9 @@ iframe {
     overflow: hidden;
     width: 75px;
     height: 75px;
-    text-align: right; 
+    text-align: right;
 }
-    
+
 .ribbon-box  span {
     font-size: 13px;
     color: #fff;
@@ -785,7 +785,7 @@ iframe {
     top: 100%;
     z-index: -1;
     border-right: 3px solid transparent;
-    border-bottom: 3px solid transparent; 
+    border-bottom: 3px solid transparent;
 }
 
 .ribbon-box  span:after {
@@ -795,7 +795,7 @@ iframe {
     top: 100%;
     z-index: -1;
     border-left: 3px solid transparent;
-    border-bottom: 3px solid transparent; 
+    border-bottom: 3px solid transparent;
 }
 
 /*======================================
@@ -1092,7 +1092,7 @@ textarea.form-control {
 
 .bg-account-pages {
     background: linear-gradient(to right, #363795, #005C97);
-    
+
     opacity: 0.9;
 }
 

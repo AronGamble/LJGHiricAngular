@@ -3,17 +3,6 @@
     <div class="row align-items-center">
       <div class="col-lg-5 order-2 order-lg-1">
         <div class="features-box mt-5 mt-lg-0">
-          <h3>Full stack web developer with 8 years contracting experience</h3>
-          <p class="text-muted web-desc">
-            Separated they live in Bookmarksgrove right at the coast of the
-            Semantics, a large language ocean.
-          </p>
-          <ul class="text-muted list-unstyled margin-t-30 features-item-list">
-            <li class="">Microsoft full stack development</li>
-            <li class="">Umbraco & Episerver CMS</li>
-            <li class="">Angular</li>
-          </ul>
-
 
           <h3>Contract History</h3>
 
@@ -26,7 +15,7 @@
                 <strong>{{ item.companyName }}</strong>
                  - {{ item.location
                 }}<br />
-                {{ item.startDate }} - {{ item.endDate | date: "MM/yyyy" }}
+                {{ item.startDate | date: "MMM y" }} - {{ item.endDate | date: "MMM y" }}
                 <a
                 [routerLink]="['/experience/employment', item.id]" class="btn"
                 >Learn More <i class="mdi mdi-arrow-right"></i

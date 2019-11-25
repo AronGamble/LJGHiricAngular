@@ -1,4 +1,4 @@
-<section class="section" id="features">
+<section class="section" id="contracts">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-12 order-2 order-lg-1">
@@ -10,15 +10,17 @@
             class="text-muted list-unstyled margin-t-30 features-item-list"
             *ngFor="let item of historyItems"
           >
-            <li class="">
+            <li>
 
                 <strong>{{ item.companyName }}</strong>
                  - {{ item.location
                 }}
                 ({{ item.startDate | date: "MMM y" }} - {{ item.endDate | date: "MMM y" }})<br />
+                <p>{{ item.description }}</p>
                 <a
-                [routerLink]="['/experience/employment', item.id]" class="btn btn-primary"
+                [routerLink]="['/experience/employment', item.id]" class="btn btn-custom margin-t-30 waves-effect waves-light"
                 >Learn More <i class="mdi mdi-arrow-right"></i
+
               ></a>
 
             </li>

@@ -29,9 +29,6 @@ export class EmploymentComponent implements OnInit {
         this.employmentItem = data;
 
       });
-
-
-
     });
 
   }

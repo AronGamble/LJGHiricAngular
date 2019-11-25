@@ -24,6 +24,7 @@ export class HistoryService {
             item.id,
             item.companyName,
             item.location,
+            item.description,
             item.startDate,
             item.endDate,
             item.typeOfEmployment
@@ -42,9 +43,10 @@ export class HistoryService {
           res.id,
           res.companyName,
           res.location,
+          res.description,
           res.startDate,
           res.endDate,
-          res.typeOfEmployment
+          res.typeOfEmployment,
         );
       })
     );

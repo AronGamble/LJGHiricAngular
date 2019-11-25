@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {  FormBuilder, FormGroup , Validators , FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+
+  contactForm = this.fb.group({
+    name: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    subject: ['', Validators.required],
+    comments: ['', Validators.required]
+  });
+
+
+  constructor(private fb: FormBuilder) { }
+
+  get name() { return this.contactForm.get('name'); }
+
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.contactForm.value);
   }
 
 }

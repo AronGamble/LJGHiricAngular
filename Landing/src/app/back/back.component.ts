@@ -8,8 +8,8 @@ import { Location } from '@angular/common';
 })
 export class BackComponent implements OnInit {
 
-  @Input() buttonText: string = "Back to Previous Page";
-  
+  @Input() buttonText = 'Back to Previous Page';
+
   constructor(private location: Location) { }
 
   ngOnInit() {

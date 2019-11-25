@@ -23,6 +23,7 @@ import { Index6Component } from './index6/index6.component';
 import { Index7Component } from './index7/index7.component';
 import { Index8Component } from './index8/index8.component';
 import { Index9Component } from './index9/index9.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { Index9Component } from './index9/index9.component';
     NgxYoutubePlayerModule.forRoot(),
     HomeRoutingModule,
     ExperienceModule,
-    ParticlesModule
+    ParticlesModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

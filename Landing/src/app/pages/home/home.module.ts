@@ -25,7 +25,7 @@ import { Index8Component } from './index8/index8.component';
 import { Index9Component } from './index9/index9.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [Index1Component, ServicesComponent, AboutComponent, DescriptionComponent, PricingComponent,
@@ -39,6 +39,7 @@ import { MatDividerModule } from '@angular/material/divider';
     ExperienceModule,
     ParticlesModule,
     MatDividerModule,
+    MatInputModule,
     ReactiveFormsModule
   ]
 })

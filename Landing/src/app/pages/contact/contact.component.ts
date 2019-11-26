@@ -20,12 +20,15 @@ export class ContactComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   get name() { return this.contactForm.get('name'); }
-
+  get email() { return this.contactForm.get('email'); }
+  get subject() { return this.contactForm.get('subject'); }
+  get comments() { return this.contactForm.get('comments'); }
 
   ngOnInit() {
   }
 
   onSubmit() {
+    
     // TODO: Use EventEmitter with form value
     console.warn(this.contactForm.value);
   }

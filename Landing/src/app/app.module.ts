@@ -13,8 +13,6 @@ import { PasswordForgetComponent } from './password-forget/password-forget.compo
 
 import { registerLocaleData } from '@angular/common';
 import localeUk from '@angular/common/locales/en-GB';
-import { ReactiveFormsModule } from '@angular/forms';
-
 
 registerLocaleData(localeUk);
 

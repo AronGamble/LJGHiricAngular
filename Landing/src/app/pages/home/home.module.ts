@@ -24,6 +24,7 @@ import { Index7Component } from './index7/index7.component';
 import { Index8Component } from './index8/index8.component';
 import { Index9Component } from './index9/index9.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeRoutingModule,
     ExperienceModule,
     ParticlesModule,
+    MatDividerModule,
     ReactiveFormsModule
   ]
 })

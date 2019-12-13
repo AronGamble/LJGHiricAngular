@@ -10,6 +10,7 @@ import { EmploymentItem } from 'src/app/Models/employment-item';
 export class ContractComponent implements OnInit {
 
   historyItems: EmploymentItem[];
+  panelOpenState: boolean;
 
   constructor(private historyService: HistoryService) { }
 

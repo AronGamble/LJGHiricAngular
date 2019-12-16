@@ -7,9 +7,8 @@ export class EmploymentItem {
     public description: string,
     public startDate: Date,
     public endDate: Date,
-    public typeOfEmployment: number
-
-
+    public typeOfEmployment: number,
+    public detail: string
   ) { }
 
 

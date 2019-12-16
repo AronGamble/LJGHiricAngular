@@ -27,12 +27,12 @@ export class HistoryService {
             item.description,
             item.startDate,
             item.endDate,
-            item.typeOfEmployment
+            item.typeOfEmployment,
+            item.detail
           );
         });
       })
     );
-
   }
 
   getEmploymentItem(id: string): Observable<EmploymentItem> {
@@ -47,13 +47,10 @@ export class HistoryService {
           res.startDate,
           res.endDate,
           res.typeOfEmployment,
+          res.detail
         );
       })
     );
 
   }
-
-
 }
-
-

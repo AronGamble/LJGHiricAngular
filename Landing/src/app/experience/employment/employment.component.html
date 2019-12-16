@@ -1,21 +1,22 @@
 <section class="section" id="features">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-lg-5 order-2 order-lg-1">
+      <div class="col-lg-12 order-2 order-lg-1">
         <div class="features-box mt-5 mt-lg-0">
           <h3>{{ employmentItem.companyName }}</h3>
           <p class="text-muted web-desc">
-            {{ employmentItem.location }}
+            <strong>{{ employmentItem.startDate | date: "MMM y" }} -
+              {{ employmentItem.endDate | date: "MMM y" }}</strong>
           </p>
-          <ul class="text-muted list-unstyled margin-t-30 features-item-list">
-            <li class="">Microsoft full stack development</li>
-            <li class="">Umbraco & Episerver CMS</li>
-            <li class="">Angular</li>
-          </ul>
+          <p class="text-muted web-desc">
+            <strong>Location:</strong> {{ employmentItem.location }}
+          </p>
+
+          <div [innerHTML]="employmentItem.detail"></div>
 
         </div>
       </div>
-      <div class="col-lg-7 order-1 order-lg-2">
+      <!-- <div class="col-lg-7 order-1 order-lg-2">
         <div class="features-img mx-auto mr-lg-0">
           <img
             src="assets/images/growth-analytics.svg"
@@ -23,9 +24,10 @@
             class="img-fluid"
           />
         </div>
-      </div>
+      </div> -->
     </div>
-    <app-back class='btn btn-primary' buttonText="Back"></app-back>
+
+    <app-back buttonText="Back"></app-back>
   </div>
 
 </section>

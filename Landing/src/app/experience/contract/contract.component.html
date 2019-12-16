@@ -19,6 +19,7 @@
                 {{ item.startDate | date: "MMM y" }} -
                     {{ item.endDate | date: "MMM y" }}
                     <br />
+                    <br />
                 <p>{{ item.description }}</p>
                 <a
                   [routerLink]="['/experience/employment', item.id]"

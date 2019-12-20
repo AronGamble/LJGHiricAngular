@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { HistoryService } from 'src/app/history.service';
+import { HistoryService } from 'src/app/services/history/history.service';
 import { EmploymentItem } from 'src/app/Models/employment-item';
 
 @Component({

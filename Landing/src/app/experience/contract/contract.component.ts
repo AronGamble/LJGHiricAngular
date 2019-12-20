@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HistoryService } from '../../history.service';
+import { HistoryService } from '../../services/history/history.service';
 import { EmploymentItem } from 'src/app/Models/employment-item';
 
 @Component({

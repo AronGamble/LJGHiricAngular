@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {  FormBuilder, FormGroup , Validators , FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ContactService } from 'src/app/services/contact/contact.service';
+import { Observable, of, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
@@ -17,7 +19,7 @@ export class ContactComponent implements OnInit {
   });
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private _contactService: ContactService) { }
 
   get name() { return this.contactForm.get('name'); }
   get email() { return this.contactForm.get('email'); }
@@ -30,6 +32,20 @@ export class ContactComponent implements OnInit {
   onSubmit() {
 
     // TODO: Use EventEmitter with form value
+
+    this._contactService.submitContact(this.contactForm.value).subscribe(
+      res => {
+
+      },
+      err => {
+
+      },
+      () => {
+
+      }
+
+    );
+
     console.warn(this.contactForm.value);
   }
 

@@ -10,6 +10,7 @@ import { Observable, of, Subject } from 'rxjs';
 })
 export class ContactComponent implements OnInit {
 
+  submitMessage = '';
 
   contactForm = this.fb.group({
     name: ['', Validators.required],
@@ -35,10 +36,11 @@ export class ContactComponent implements OnInit {
 
     this._contactService.submitContact(this.contactForm.value).subscribe(
       res => {
-
+        this.submitMessage = 'Thankyou, we\'ll be in touch';
+        this.contactForm.reset();
       },
       err => {
-
+        this.submitMessage = 'An error has occurred, please try again';
       },
       () => {
 

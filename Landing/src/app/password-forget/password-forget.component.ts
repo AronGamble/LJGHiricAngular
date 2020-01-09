@@ -10,11 +10,11 @@ export class PasswordForgetComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  
+
     document.body.classList.add('bg-account-pages');
     document.body.classList.add('py-4');
     document.body.classList.add('py-sm-0');
-  
-}
+
+  }
 
 }

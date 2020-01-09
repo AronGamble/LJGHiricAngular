@@ -46,10 +46,24 @@
         <ul class="nav navbar-nav navbar-right">
           <li>
             <button
-              type="button" [ngx-scroll-to]="'#contact'" 
+              type="button"
+              [ngx-scroll-to]="'#contact'"
               class="btn btn-custom navbar-btn btn-rounded waves-effect waves-light"
             >
               Contact
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-button ml-auto">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <button
+              type="button"
+              [routerLink]="['/vip']"
+              class="btn btn-custom navbar-btn btn-rounded waves-effect waves-light"
+            >
+              VIP
             </button>
           </li>
         </ul>

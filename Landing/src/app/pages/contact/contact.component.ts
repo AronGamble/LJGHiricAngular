@@ -10,6 +10,8 @@ import { Observable, of, Subject } from 'rxjs';
 })
 export class ContactComponent implements OnInit {
 
+  constructor(private fb: FormBuilder, private _contactService: ContactService) { }
+
   submitMessage = '';
 
   contactForm = this.fb.group({
@@ -18,9 +20,6 @@ export class ContactComponent implements OnInit {
     subject: ['', Validators.required],
     comments: ['', Validators.required]
   });
-
-
-  constructor(private fb: FormBuilder, private _contactService: ContactService) { }
 
   get name() { return this.contactForm.get('name'); }
   get email() { return this.contactForm.get('email'); }
@@ -35,11 +34,11 @@ export class ContactComponent implements OnInit {
     // TODO: Use EventEmitter with form value
 
     this._contactService.submitContact(this.contactForm.value).subscribe(
-      res => {
+      () => {
         this.submitMessage = 'Thankyou, we\'ll be in touch';
         this.contactForm.reset();
       },
-      err => {
+      () => {
         this.submitMessage = 'An error has occurred, please try again';
       },
       () => {

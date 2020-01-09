@@ -11,6 +11,7 @@ export class ContractComponent implements OnInit {
 
   historyItems: EmploymentItem[];
   panelOpenState: boolean;
+  error = false;
 
   constructor(private historyService: HistoryService) { }
 
@@ -19,8 +20,9 @@ export class ContractComponent implements OnInit {
     this.historyService.getHistory().subscribe((data) => {
       this.historyItems = data;
     },
-      err => {
-        alert(err);
+      () => {
+      this.error = true;
+
       },
       () => {}
     );

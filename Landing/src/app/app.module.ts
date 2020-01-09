@@ -13,6 +13,8 @@ import { PasswordForgetComponent } from './password-forget/password-forget.compo
 
 import { registerLocaleData } from '@angular/common';
 import localeUk from '@angular/common/locales/en-GB';
+import { VipComponent } from './vip/vip.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localeUk);
 
@@ -22,6 +24,7 @@ registerLocaleData(localeUk);
     LoginComponent,
     RegisterComponent,
     PasswordForgetComponent,
+    VipComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,10 +32,11 @@ registerLocaleData(localeUk);
     AppRoutingModule,
     ExperienceModule,
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,  // Add this only in the root module
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'en-GB'}
+    { provide: LOCALE_ID, useValue: 'en-GB' }
   ],
   bootstrap: [AppComponent]
 })

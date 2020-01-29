@@ -13,9 +13,7 @@ export class ContactService {
 
   submitContact(contactItem: ContactItem): Observable<object> {
 
-    //this.http.post('https://ljghistoryservice.azurewebsites.net/Contact', contactItem).pipe(
-
-      return this.http.post('https://localhost:44348/contact', contactItem);
+      return this.http.post('https://ljghistoryservice.azurewebsites.net/contact', contactItem);
 
   }
 

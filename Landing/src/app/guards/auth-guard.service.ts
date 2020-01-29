@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '../services/authentication/authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthGuardService implements CanActivate {
 
   // tslint:disable-next-line: variable-name
@@ -15,7 +16,6 @@ export class AuthGuardService implements CanActivate {
 
     const currentUser = this.authenticationService.currentUserValue;
     if (currentUser) {
-      // logged in so return true
       return true;
     }
 

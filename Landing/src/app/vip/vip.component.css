@@ -1,0 +1,9 @@
+.role-type-label {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.role-type-radio-group {
+    margin: 5px;
+}

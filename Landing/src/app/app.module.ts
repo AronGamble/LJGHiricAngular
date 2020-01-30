@@ -16,6 +16,11 @@ import localeUk from '@angular/common/locales/en-GB';
 import { VipComponent } from './vip/vip.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './helpers/jwtinterceptor';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 registerLocaleData(localeUk);
 
@@ -26,6 +31,7 @@ registerLocaleData(localeUk);
     RegisterComponent,
     PasswordForgetComponent,
     VipComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +40,10 @@ registerLocaleData(localeUk);
     ExperienceModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
+    MatCardModule,
     BrowserAnimationsModule,  // Add this only in the root module
   ],
   providers: [

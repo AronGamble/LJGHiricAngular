@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { HistoryService } from 'src/app/services/history/history.service';
 import { EmploymentItem } from 'src/app/Models/employment-item';
 
@@ -13,22 +13,31 @@ export class EmploymentComponent implements OnInit {
   id: string;
   employmentItem: EmploymentItem;
 
-  constructor(private route: ActivatedRoute, private historyService: HistoryService) {
+  constructor(private route: ActivatedRoute, private historyService: HistoryService,  private router: Router) {
   }
+
+
+  backToContracts(e: Event){
+
+  this.router.navigate(['/experience/']);
+
+}
+
+
 
   ngOnInit() {
 
-    this.route.params.subscribe(params => {
+    document.body.classList.add('bg-account-pages');
+    document.body.classList.add('py-4');
+    document.body.classList.add('py-sm-0');
 
-      this.id = params.id;
+    this.route.data.subscribe(
+      (data: Data) => {
+         this.employmentItem = data['employmentItem']; 
+        }
+    )
 
-      this.historyService.getEmploymentItem(params.id).subscribe((data: EmploymentItem) => {
-
-        this.employmentItem = data;
-
-      });
-    });
-
+   
   }
 
 }

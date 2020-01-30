@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { EmploymentItem } from '../../Models/employment-item';
-
+import { environment } from '../../../environments/environment';
 
 
 @Injectable({
@@ -11,13 +11,15 @@ import { EmploymentItem } from '../../Models/employment-item';
 })
 export class HistoryService {
 
+private API_URL = environment.API_URL;
+
   constructor(private http: HttpClient) {
 
   }
 
   getHistory(): Observable<EmploymentItem[]> {
 
-    return this.http.get<EmploymentItem[]>('https://ljghistoryservice.azurewebsites.net/History').pipe(
+    return this.http.get<EmploymentItem[]>(this.API_URL + 'History').pipe(
       map(res => {
         return res.map(item => {
           return new EmploymentItem(
@@ -37,7 +39,7 @@ export class HistoryService {
 
   getEmploymentItem(id: string): Observable<EmploymentItem> {
 
-    return this.http.get<EmploymentItem>('https://ljghistoryservice.azurewebsites.net/History/' + id).pipe(
+    return this.http.get<EmploymentItem>(this.API_URL + 'History/' + id).pipe(
       map(res => {
         return new EmploymentItem(
           res.id,

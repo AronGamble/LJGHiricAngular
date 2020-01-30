@@ -26,9 +26,9 @@ export class AuthenticationService {
 
   login(username: string, password: string) {
 
-    const u = new User(0, username, password, '', '');
+    const userLogin = new User(0, username, password, '', '');
 
-    return this.http.post<any>(this.API_URL + '/authentication', u)
+    return this.http.post<any>(this.API_URL + 'authentication', userLogin)
       .pipe(map(user => {
 
         // login successful if there's a jwt token in the response

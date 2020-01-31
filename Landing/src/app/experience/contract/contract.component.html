@@ -11,67 +11,36 @@
           </h3>
 
           <div class="text-muted list-unstyled margin-t-30 features-item-list">
-            <mat-accordion>
+            <mat-accordion  class="example-headers-align">
               <mat-expansion-panel *ngFor="let item of historyItems">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     <strong>{{ item.companyName }}</strong>
                   </mat-panel-title>
-                  <!-- <mat-panel-description>
-                  </mat-panel-description> -->
+                  <mat-panel-description>
+                    <strong>{{ item.startDate | date: "MMMM y" }} -
+                      {{ item.endDate | date: "MMMM y" }}</strong>  
+                      <strong>{{ item.location }}</strong>
+                  </mat-panel-description>
                 </mat-expansion-panel-header>
-                {{ item.startDate | date: "MMM y" }} -
-                {{ item.endDate | date: "MMM y" }}
-                <br />
-                <br />
-                <p>{{ item.description }}</p>
-                <a
+                <p class="text-muted web-desc">{{ item.description }}</p>
+                <div class="features-box mt-5 mt-lg-0">
+
+                  <div [innerHTML]="item.detail"></div>
+
+                </div>
+                <!-- <a
                   [routerLink]="['/experience/employment', item.id]"
                   class="btn btn-custom margin-t-30 waves-effect waves-light"
-                  >Learn More <i class="mdi mdi-arrow-right"></i
-                ></a>
-                <!-- <mat-form-field>
-                <input matInput placeholder="First name" />
-              </mat-form-field>
-
-              <mat-form-field>
-                <input matInput placeholder="Age" />
-              </mat-form-field> -->
+                  >More Details<i class="mdi mdi-arrow-right"></i
+                ></a> -->
               </mat-expansion-panel>
             </mat-accordion>
           </div>
-          <!-- <ul
-            class="text-muted list-unstyled margin-t-30 features-item-list"
-            *ngFor="let item of historyItems"
-          >
-            <li>
-              <strong>{{ item.companyName }}</strong>
-              <br />
-              {{ item.location }} ({{ item.startDate | date: "MMM y" }} -
-              {{ item.endDate | date: "MMM y" }})<br />
-              <br />
-              <p>{{ item.description }}</p>
-              <a
-                [routerLink]="['/experience/employment', item.id]"
-                class="btn btn-custom margin-t-30 waves-effect waves-light"
-                >Learn More <i class="mdi mdi-arrow-right"></i
-              ></a>
-              <br />
-              <br />
-              <mat-divider></mat-divider>
-            </li>
-          </ul> -->
+
         </div>
       </div>
-      <!-- <div class="col-lg-7 order-1 order-lg-2">
-        <div class="features-img mx-auto mr-lg-0">
-          <img
-            src="assets/images/growth-analytics.svg"
-            alt="macbook image"
-            class="img-fluid"
-          />
-        </div>
-      </div> -->
+
     </div>
   </div>
 </section>

@@ -10,6 +10,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [ContractComponent, PermanentComponent, EmploymentComponent, BackComponent],
@@ -19,6 +21,8 @@ import { MatInputModule } from '@angular/material';
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
+    MatListModule,
+    MatIconModule,
     ExperienceRoutingModule
   ],
   exports: [ContractComponent, PermanentComponent, EmploymentComponent, BackComponent]

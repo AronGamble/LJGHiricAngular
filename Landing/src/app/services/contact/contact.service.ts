@@ -10,15 +10,15 @@ import { environment } from '../../../environments/environment';
 })
 export class ContactService {
 
-  private API_URL = environment.API_URL;
+  private CONTACT_URL = environment.CONTACT_URL;
 
   constructor(private http: HttpClient) { }
 
-  submitContact(contactItem: ContactItem): Observable<object> {
+   submitContact(contactItem: ContactItem): Observable<object> {
 
-      return this.http.post(this.API_URL + 'contact', contactItem);
+     return this.http.post(this.CONTACT_URL, contactItem);
 
-  }
+ }
 
 
 

@@ -12,6 +12,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [ContractComponent, PermanentComponent, EmploymentComponent, BackComponent],
@@ -23,6 +25,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatListModule,
     MatIconModule,
+    MatPaginatorModule,
+    MatTableModule,
     ExperienceRoutingModule
   ],
   exports: [ContractComponent, PermanentComponent, EmploymentComponent, BackComponent]

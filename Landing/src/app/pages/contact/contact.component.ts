@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ContactService } from 'src/app/services/contact/contact.service';
 import { Observable, of, Subject } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-contact',
@@ -10,9 +11,7 @@ import { Observable, of, Subject } from 'rxjs';
 })
 export class ContactComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private _contactService: ContactService) { }
-
-  submitMessage = '';
+  constructor(private fb: FormBuilder, private _contactService: ContactService, private snackBar: MatSnackBar) { }
 
   contactForm = this.fb.group({
     name: ['', Validators.required],
@@ -33,13 +32,17 @@ export class ContactComponent implements OnInit {
 
     // TODO: Use EventEmitter with form value
 
+
+
+
     this._contactService.submitContact(this.contactForm.value).subscribe(
       () => {
-        this.submitMessage = 'Thankyou, we\'ll be in touch';
+
+        this.snackBar.open("Thankyou, we\'ll be in touch soon", null, { duration: 5000, horizontalPosition: 'right' })
         this.contactForm.reset();
       },
       () => {
-        this.submitMessage = 'An error has occurred, please try again';
+        this.snackBar.open("An error has occured", null, { duration: 5000, horizontalPosition: 'right' })
       },
       () => {
 

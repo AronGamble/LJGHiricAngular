@@ -21,6 +21,10 @@ import { MatInputModule } from '@angular/material';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
+import { SecretModule } from './secret/secret.module';
+import { TrainingModule } from './training/training.module';
 
 registerLocaleData(localeUk);
 
@@ -44,7 +48,11 @@ registerLocaleData(localeUk);
     MatInputModule,
     MatRadioModule,
     MatCardModule,
-    BrowserAnimationsModule,  // Add this only in the root module
+    MatAutocompleteModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    SecretModule,
+    TrainingModule,  // Add this only in the root module
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'en-GB' },

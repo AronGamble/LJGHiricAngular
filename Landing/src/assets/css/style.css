@@ -147,8 +147,8 @@ b {
 }
 
 .bg-overlay {
-    background: #005C97;  /* fallback for old browsers */
-    background: linear-gradient(to right, #363795, #005C97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #552583;  /* fallback for old browsers */
+    background: linear-gradient(to right,#552583, #552583); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     opacity: 0.95;
     position: absolute;
     height: 100%;
@@ -246,7 +246,7 @@ iframe {
 }
 
 .text-white {
-    color: #fff !important;
+    color: #fbda21 !important;
 }
 
 .text-gray {
@@ -1091,7 +1091,7 @@ textarea.form-control {
 ====================================*/
 
 .bg-account-pages {
-    background: linear-gradient(to right, #363795, #005C97);
+    background: linear-gradient(to right, #552583, #552583);
 
     opacity: 0.9;
 }

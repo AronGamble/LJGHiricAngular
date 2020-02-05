@@ -6,9 +6,10 @@
           <h1 class="section-title text-center">Contract History</h1>
           <div class="section-title-border margin-t-20"></div>
           <br />
-          <h3 class="text-center" [hidden]="!error">
-            Contract history is not currently available
-          </h3>
+
+             <h3 class="section-title text-center" [hidden]="!error">{{errorMessage}}</h3>
+
+
 
           <div class="text-muted list-unstyled margin-t-30 features-item-list">
             <mat-accordion  class="example-headers-align">
@@ -19,7 +20,7 @@
                   </mat-panel-title>
                   <mat-panel-description>
                     <strong>{{ item.startDate | date: "MMMM y" }} -
-                      {{ item.endDate | date: "MMMM y" }}</strong>  
+                      {{ item.endDate | date: "MMMM y" }}</strong>
                       <strong>{{ item.location }}</strong>
                   </mat-panel-description>
                 </mat-expansion-panel-header>

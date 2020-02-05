@@ -1,72 +1,102 @@
 <div id="theme_id" class="theme-red">
-    <div class="account-home-btn d-none d-sm-block">
-        <a routerLink="/" class="text-white"><i class="mdi mdi-home h1"></i></a>
-    </div>
+  <div class="account-home-btn d-none d-sm-block">
+    <a routerLink="/" class="text-white"><i class="mdi mdi-home h1"></i></a>
+  </div>
 
-    <section class="height-100vh">
-        <div class="display-table">
-            <div class="display-table-cell">
-                <div class="container">
+  <section class="height-100vh">
+    <div class="display-table">
+      <div class="display-table-cell">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-center mt-6">
+                    <h3 class="font-weight-bold">
+                      <a
+                        routerLink="/"
+                        class="text-dark text-uppercase account-pages-logo"
+                        >Welcome...</a
+                      >
+                    </h3>
+                    <p class="text-muted">Tell us more...</p>
+                  </div>
+                  <div class="p-10">
+                    <form
+                      method="post"
+                      action="#"
+                      name="details-form"
+                      id="details-form"
+                      [formGroup]="detailsForm"
+                      (ngSubmit)="onSubmit()">
+                      <div class="form-group">
+                        <mat-form-field>
+                          <input matInput placeholder="Standard Input" />
+                        </mat-form-field>
+                      </div>
+                      <div class="form-group">
+                        <mat-form-field>
+                          <textarea matInput placeholder="Textarea"></textarea>
+                        </mat-form-field>
+                      </div>
 
+                      <label id="role-type-label">Role Type</label>
+                      <mat-radio-group
+                        aria-labelledby="example-radio-group-label"
+                        class="example-radio-group"
+                      >
+                        <mat-radio-button
+                          class="example-radio-button"
+                          *ngFor="let jobTypeOption of jobTypeOptions"
+                          [value]="jobTypeOption"
+                        >
+                          {{ jobTypeOption.description }}
+                        </mat-radio-button>
+                      </mat-radio-group>
 
-                   <div class="row justify-content-center">
+                      <mat-form-field>
+                        <input
+                          type="text"
+                          matInput
+                          [matAutocomplete]="auto"
+                          placeholder="Auto Complete"
+                        />
+                      </mat-form-field>
 
+                      <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option
+                          *ngFor="let option of jobTypeOptions"
+                          [value]="option.description"
+                        >
+                          {{ option.description }}
+                        </mat-option>
+                      </mat-autocomplete>
 
+                      <div class="form-group">
+                      <mat-form-field>
+                        <mat-label>Select an option</mat-label>
+                        <mat-select [(value)]="selected">
+                          <mat-option>None</mat-option>
+                          <mat-option value="option1">Option 1</mat-option>
+                          <mat-option value="option2">Option 2</mat-option>
+                          <mat-option value="option3">Option 3</mat-option>
+                        </mat-select>
+                      </mat-form-field>
 
-
-                        <div class="col-lg-5">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="text-center mt-3">
-                                        <h3 class="font-weight-bold">
-                                            <a routerLink="/" class="text-dark text-uppercase account-pages-logo"><i
-                                                    class="mdi mdi-alien"></i>Welcome...</a>
-                                        </h3>
-                                        <p class="text-muted">Tell us more...</p>
-                                    </div>
-                                    <div class="p-3">
-                                        <form method="post" action="#" name="details-form" id="details-form"
-                                            [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
-                                            <div class="form-group">
-
-                                                <mat-form-field>
-                                                    <textarea matInput placeholder="input"></textarea>
-                                                </mat-form-field>
-                                            </div>
-                                            <div class="form-group">
-                                                <mat-form-field>
-                                                    <textarea matInput placeholder="textarea"></textarea>
-                                                </mat-form-field>
-                                            </div>
-
-                                            <label id="role-type-label">Role Type</label>
-                                            <mat-radio-group class="role-type-radio-group"
-                                                aria-labelledby="role-type-label">
-
-                                                <mat-radio-button *ngFor="let jobTypeOption of jobTypeOptions"
-                                                    [value]="jobTypeOption">
-                                                    {{jobTypeOption.description}}
-                                                </mat-radio-button>
-
-                                            </mat-radio-group>
-
-
-                                            <div class="mt-3">
-                                                <button type="submit" class=""> Submit
-                                                </button>
-
-                                            </div>
-
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      <p>You selected: {{selected}}</p>
                     </div>
+
+                      <div class="mt-3">
+                        <button type="submit" class="">Submit</button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-
-
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 </div>

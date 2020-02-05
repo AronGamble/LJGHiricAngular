@@ -143,9 +143,9 @@
   }
 
   .bg-overlay {
-    background: #005C97;
+    background: #552583;
     /* fallback for old browsers */
-    background: linear-gradient(to right, #363795, #005C97);
+    background: linear-gradient(to right, #552583,  #552583);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     opacity: 0.95;
     position: absolute;
@@ -241,7 +241,7 @@
   }
 
   .text-white {
-    color: #fff !important;
+    color: #fbda21 !important;
   }
 
   .text-gray {
@@ -327,7 +327,7 @@
   .navbar-custom {
     .navbar-brand {
       text-transform: uppercase;
-      color: #fff !important;
+color: #fbda21 !important;
       font-weight: 700;
       letter-spacing: 2px;
       height: auto;
@@ -1057,7 +1057,7 @@
   ====================================*/
 
   .bg-account-pages {
-    background: linear-gradient(to right, #363795, #005C97);
+    background: linear-gradient(to right, #552084, #552084);
     opacity: 0.9;
   }
 

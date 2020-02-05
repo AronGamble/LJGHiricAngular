@@ -11,7 +11,9 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   { path: '', component: LayoutComponent, loadChildren: './pages/pages.module#PagesModule' },
-  { path: 'experience', loadChildren: './experience/experience.module#ExperienceModule' },
+  { path: 'experience', loadChildren: () => import('./experience/experience.module').then(mod => mod.ExperienceModule) },
+  { path: 'secret', loadChildren: () => import('./secret/secret.module').then(mod => mod.SecretModule) },
+  { path: 'training', loadChildren: () => import('./training/training.module').then(mod => mod.TrainingModule) },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'password-forget', component: PasswordForgetComponent },

@@ -26,7 +26,7 @@
                           <input matInput placeholder="Username" id="username" name="username"
                             formControlName="username">
                         </mat-form-field>
-                        
+
                       </div>
 
                       <div class="form-group">
@@ -50,6 +50,8 @@
                       </div>
 
                       <div class="mt-4 mb-0 text-center">
+                        <input #villa placeholder="Your favorite pizza toping">
+                        <ng-template appPlaceholder></ng-template>
                         <a routerLink="/password-forget" class="text-dark"><i class="mdi mdi-lock"></i> Forgot your
                           password?</a>
                       </div>
@@ -64,3 +66,5 @@
     </div>
   </section>
 </div>
+
+

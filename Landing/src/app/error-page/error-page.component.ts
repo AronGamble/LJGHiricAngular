@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Data } from '@angular/router';
+import { ActivatedRoute, Data, ActivatedRouteSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-error-page',
@@ -17,12 +17,15 @@ export class ErrorPageComponent implements OnInit {
     document.body.classList.add('bg-account-pages');
     document.body.classList.add('py-4');
     document.body.classList.add('py-sm-0');
-    
+
+
+
+
     this.route.data.subscribe(
       (data: Data) => {
-        this.errorMessage = data['errorMessage'];
+        this.errorMessage = data.errorMessage;
       }
-    )
+    );
 
   }
 

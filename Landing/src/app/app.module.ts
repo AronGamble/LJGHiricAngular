@@ -25,6 +25,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { SecretModule } from './secret/secret.module';
 import { TrainingModule } from './training/training.module';
+import { SharedModule } from './shared/shared.module';
+import { AlertComponent } from './shared/alert.component';
+import { DirectivesModule } from './directives/directives.module';
 
 registerLocaleData(localeUk);
 
@@ -35,7 +38,7 @@ registerLocaleData(localeUk);
     RegisterComponent,
     PasswordForgetComponent,
     VipComponent,
-    ErrorPageComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -52,12 +55,16 @@ registerLocaleData(localeUk);
     MatSelectModule,
     BrowserAnimationsModule,
     SecretModule,
+    SharedModule,
+    DirectivesModule,
     TrainingModule,  // Add this only in the root module
   ],
+  exports: [],
   providers: [
     { provide: LOCALE_ID, useValue: 'en-GB' },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AlertComponent]
 })
 export class AppModule { }

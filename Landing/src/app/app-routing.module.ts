@@ -18,8 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'password-forget', component: PasswordForgetComponent },
   { path: 'vip', component: VipComponent, canActivate: [AuthGuardService] },
-  { path: 'not-found', component: ErrorPageComponent, data: { errorMessage: 'Page not found!' } },
-  { path: '**', redirectTo: '/not-found'}
+  { path: '**', component: ErrorPageComponent, data: { errorMessage: 'Page not found!' } }
 ];
 
 @NgModule({

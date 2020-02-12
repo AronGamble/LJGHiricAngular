@@ -26,6 +26,9 @@ import { Index9Component } from './index9/index9.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { DirectivesModule } from 'src/app/directives/directives.module';
+
 
 @NgModule({
   declarations: [Index1Component, ServicesComponent, AboutComponent, DescriptionComponent, PricingComponent,
@@ -40,7 +43,9 @@ import { MatInputModule } from '@angular/material/input';
     ParticlesModule,
     MatDividerModule,
     MatInputModule,
-    ReactiveFormsModule
+    SharedModule,
+    ReactiveFormsModule,
+    DirectivesModule
   ]
 })
 export class HomeModule { }

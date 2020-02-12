@@ -3,14 +3,17 @@ import { CommonModule } from '@angular/common';
 import { HomeModule } from './home/home.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SharedModule } from '../shared/shared.module';
+import { AlertComponent } from '../shared/alert.component';
 
 @NgModule({
-  declarations: [ ],
+  declarations: [],
   imports: [
     CommonModule,
     HomeModule,
     MatSnackBarModule,
-    PagesRoutingModule
-  ]
+    SharedModule
+  ],
+  entryComponents: [AlertComponent]
 })
 export class PagesModule { }

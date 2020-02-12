@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
   @ViewChild(PlaceholderDirective) pvilla: PlaceholderDirective;
 
   // tslint:disable-next-line: variable-name
-  constructor(private _router: Router,
+  constructor(
+    private router: Router,
     // tslint:disable-next-line: variable-name
     private _route: ActivatedRoute,
     private fb: FormBuilder,
@@ -33,19 +34,19 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
 
-    // this.authService.login(this.username.value, this.password.value).subscribe(
-    //   data => {
+    this.authService.login(this.username.value, this.password.value).subscribe(
+      () => {
 
-    //     this._route.queryParams.subscribe(params => {
-    //       this._router.navigate([params.returnUrl]);
-    //     });
-    //   },
-    //   () => {
-    //     this.submitMessage = 'An error has occurred, please try again';
-    //   },
-    //   () => {
-    //   }
-    // );
+        this._route.queryParams.subscribe(params => {
+          this.router.navigate([params.returnUrl]);
+        });
+      },
+      () => {
+        this.submitMessage = 'An error has occurred, please try again';
+      },
+      () => {
+      }
+    );
 
     console.warn(this.loginForm.value);
   }

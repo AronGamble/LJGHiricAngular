@@ -44,6 +44,7 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
 
+    // we don't need to keep the subscription open so close it if there is one
     if (this.closeSub) {
       this.closeSub.unsubscribe();
     }

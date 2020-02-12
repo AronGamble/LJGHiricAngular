@@ -13,6 +13,18 @@
             <mat-accordion class="example-headers-align">
               <mat-expansion-panel *ngFor="let item of historyItems">
                 <mat-expansion-panel-header>
+
+                  <mat-panel-title>
+                    <strong>{{ item.companyName }}</strong>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    <strong>{{ item.startDate | date: "MMMM y" }} -
+                      {{ item.endDate | date: "MMMM y" }}</strong>
+                    <strong>{{ item.location }}</strong>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-contract-item-summary [item]='item'></app-contract-item-summary>
+                <!-- <mat-expansion-panel-header>
                   <mat-panel-title>
                     <strong>{{ item.companyName }}</strong>
                   </mat-panel-title>
@@ -27,7 +39,7 @@
 
                   <div [innerHTML]="item.detail"></div>
 
-                </div>
+                </div> -->
                 <!-- <a
                   [routerLink]="['/experience/employment', item.id]"
                   class="btn btn-custom margin-t-30 waves-effect waves-light"

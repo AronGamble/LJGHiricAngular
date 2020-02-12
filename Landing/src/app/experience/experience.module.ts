@@ -14,9 +14,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { ContractItemSummaryComponent } from './contract-item-summary/contract-item-summary.component';
 
 @NgModule({
-  declarations: [ContractComponent, PermanentComponent, EmploymentComponent, BackComponent],
+  declarations: [ContractComponent, PermanentComponent, EmploymentComponent, BackComponent, ContractItemSummaryComponent],
   imports: [
     CommonModule,
     MatDividerModule,
@@ -29,6 +30,7 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     ExperienceRoutingModule
   ],
-  exports: [ContractComponent, PermanentComponent, EmploymentComponent, BackComponent]
+  exports: [ContractComponent, PermanentComponent, EmploymentComponent, BackComponent],
+  entryComponents: []
 })
 export class ExperienceModule { }

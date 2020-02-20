@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 })
 export class HistoryService {
 
-private API_URL = environment.API_URL;
+  private API_URL = environment.API_URL;
 
   constructor(private http: HttpClient) {
 
@@ -19,7 +19,7 @@ private API_URL = environment.API_URL;
 
   getHistory(): Observable<EmploymentItem[]> {
 
-    return this.http.get<EmploymentItem[]>(this.API_URL + 'History', {observe: 'response'}).pipe(
+    return this.http.get<EmploymentItem[]>(this.API_URL + 'contracts', { observe: 'response' }).pipe(
       map(res => {
         return res.body.map(item => {
           return new EmploymentItem(
@@ -40,7 +40,7 @@ private API_URL = environment.API_URL;
 
   getEmploymentItem(id: string): Observable<EmploymentItem> {
 
-    return this.http.get<EmploymentItem>(this.API_URL + 'History/' + id).pipe(
+    return this.http.get<EmploymentItem>(this.API_URL + 'contracts/' + id).pipe(
       map(res => {
         return new EmploymentItem(
           res.id,

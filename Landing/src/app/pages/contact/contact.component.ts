@@ -9,7 +9,7 @@ import { Movie } from 'src/app/models/movie';
 import { map } from 'rxjs/operators';
 import { eventNames } from 'process';
 import { DetailDialog } from './detail-dialog';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-contact',
@@ -20,6 +20,7 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   // Get the element where the directive has been attached in the DOM
   @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   // Store a reference to the close observable on the alert component
   private closeSub: Subscription;
@@ -173,7 +174,7 @@ export class ContactComponent implements OnInit, OnDestroy {
         if (data.Response == "True") {
 
           this.length = data.totalResults;
-          
+
           this.hideNoResults = false;
 
           if (this.results.length > 0) {
@@ -219,6 +220,7 @@ export class ContactComponent implements OnInit, OnDestroy {
     // New search so clear the previous search page data
     this.searchForm.controls["page"].reset();
     this.pages = [];
+    this.paginator.pageIndex = 0;
     this.refreshPage();
 
   }

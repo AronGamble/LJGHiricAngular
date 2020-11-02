@@ -13,17 +13,14 @@ export class EmploymentComponent implements OnInit {
   id: string;
   employmentItem: EmploymentItem;
 
-  constructor(private route: ActivatedRoute, private historyService: HistoryService,  private router: Router) {
+  constructor(private route: ActivatedRoute, private historyService: HistoryService, private router: Router) {
   }
 
+  backToContracts(e: Event) {
 
-  backToContracts(e: Event){
+    this.router.navigate(['/']);
 
-  this.router.navigate(['/experience/']);
-
-}
-
-
+  }
 
   ngOnInit() {
 
@@ -33,11 +30,10 @@ export class EmploymentComponent implements OnInit {
 
     this.route.data.subscribe(
       (data: Data) => {
-         this.employmentItem = data['employmentItem']; 
-        }
+        this.employmentItem = data['employmentItem'];
+      }
     )
 
-   
   }
 
 }

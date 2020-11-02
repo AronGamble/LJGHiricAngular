@@ -25,16 +25,23 @@ import { Index8Component } from './index8/index8.component';
 import { Index9Component } from './index9/index9.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DirectivesModule } from 'src/app/directives/directives.module';
-
+import { DetailComponent } from '../../movies/detail/detail.component';
 
 @NgModule({
   declarations: [Index1Component, ServicesComponent, AboutComponent, DescriptionComponent, PricingComponent,
     GetstartComponent, BlogComponent, ContactComponent, TestiComponent,
     Index2Component, Index3Component, Index4Component, ClientComponent, FeatureComponent, Index5Component, Index6Component,
-    Index7Component, Index8Component, Index9Component],
+    Index7Component, Index8Component, Index9Component, DetailComponent],
   imports: [
     CommonModule,
     NgxYoutubePlayerModule.forRoot(),
@@ -45,7 +52,15 @@ import { DirectivesModule } from 'src/app/directives/directives.module';
     MatInputModule,
     SharedModule,
     ReactiveFormsModule,
-    DirectivesModule
+    DirectivesModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatListModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSelectModule  
   ]
 })
 export class HomeModule { }

@@ -1,143 +1,102 @@
 <section class="section " id="contact">
 
   <div class="container">
+
     <div class="row">
       <div class="col-lg-8 offset-lg-2">
-        <h1 class="section-title text-center">Contact</h1>
+        <h1 class="section-title text-center">Movie Search</h1>
         <div class="section-title-border margin-t-20"></div>
-        <!-- <p
-          class="section-subtitle text-muted text-center font-secondary padding-t-30"
-        >
-          We thrive when coming up with innovative ideas but also understand
-          that a smart concept should be supported with measurable results.
-        </p> -->
       </div>
     </div>
+
     <div class="row">
       <div class="col-lg-12">
         <div class="custom-form mt-4 pt-4">
           <div id="message"></div>
-          <form
-            method="post"
-            action="#"
-            name="contact-form"
-            id="contact-form"
-            [formGroup]="contactForm"
-            (ngSubmit)="onSubmit()"
-          >
+          <form method="post" action="#" name="search-form" id="search-form" [formGroup]="searchForm"
+            (ngSubmit)="onSubmit()">
+
             <div class="row">
-              <div class="col-lg-6">
+              <div class="col-lg-4">
                 <div class="form-group mt-2">
-                  <input
-                    name="name"
-                    formControlName="name"
-                    id="name"
-                    type="text"
-                    class="form-control"
-                    placeholder="Your name*"
-                    required
-                  />
-                  <div
-                    *ngIf="name.invalid && (name.dirty || name.touched)"
-                    class="alert alert-danger"
-                  >
+                  <input name="name" formControlName="name" id="name" type="text" class="form-control"
+                    placeholder="Search text" required />
+                  <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
                     <div *ngIf="name.errors['required']">
-                      Name is required.
+                      Search text is required.
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6">
+
+              <div class="col-lg-4" *ngIf="showPager()">
                 <div class="form-group mt-2">
-                  <input
-                    name="email"
-                    formControlName="email"
-                    id="email"
-                    type="email"
-                    class="form-control"
-                    placeholder="Your email*"
-                    required
-                  />
-                  <div
-                    *ngIf="email.invalid && (email.dirty || email.touched)"
-                    class="alert alert-danger"
-                  >
-                    <div *ngIf="email.errors['email']">
-                      Email format incorrect.
-                    </div>
-                    <div *ngIf="email.errors['required']">
-                      Email is required.
-                    </div>
-                  </div>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Select Page</mat-label>
+                    <mat-select [formControl]="page" id="page" (selectionChange)="refreshPage()">
+                      <mat-option *ngFor="let page of pages" value="{{page}}">{{page}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-12">
+
+              <div class="col-lg-4">
                 <div class="form-group mt-2">
-                  <input
-                    type="text"
-                    formControlName="subject"
-                    class="form-control"
-                    id="subject"
-                    placeholder="Your Subject.."
-                    required
-                  />
-                  <div
-                    *ngIf="
-                      subject.invalid && (subject.dirty || subject.touched)
-                    "
-                    class="alert alert-danger"
-                  >
-                    <div *ngIf="subject.errors['required']">
-                      Subject is required.
-                    </div>
-                  </div>
+                  <button type="submit" [disabled]="!searchForm.valid" class="submitBnt btn btn-custom">
+                    Search
+                  </button>
+                  <div id="simple-msg"></div>
                 </div>
               </div>
+
             </div>
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="form-group mt-2">
-                  <textarea
-                    name="comments"
-                    formControlName="comments"
-                    id="comments"
-                    rows="4"
-                    class="form-control"
-                    placeholder="Your message..."
-                    required
-                  ></textarea>
-                  <div
-                    *ngIf="
-                      comments.invalid && (comments.dirty || comments.touched)
-                    "
-                    class="alert alert-danger"
-                  >
-                    <div *ngIf="comments.errors['required']">
-                      Comments is required.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-12 text-right">
-                <button
-                  type="submit"
-                  [disabled]="!contactForm.valid"
-                  class="submitBnt btn btn-custom"
-                >
-                  Send Message
-                </button>
-                <div id="simple-msg"></div>
-              </div>
-            </div>
+
           </form>
         </div>
       </div>
     </div>
+
+    <mat-paginator [length]="length" [pageSize]="10" [pageSizeOptions]="pageSizeOptions"
+      (page)="topBuzz($event)" hidePageSize="true">
+    </mat-paginator>
+
+
+    <h2 *ngIf="hideNoResults">No Movies Found!!</h2>
+
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel *ngFor="let result of results" (opened)="openedPanel(result.imdbID)">
+        <mat-expansion-panel-header>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <strong>{{ result.Title }}</strong>
+
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div>Year:<span class="text-muted web-desc"> {{ result.Year}}
+          </span></div>
+
+        <div> Type:<span class="text-muted web-desc"> {{ result.Type}}
+          </span></div>
+
+        <button class="btn btn-custom margin-t-30 waves-effect waves-light" (click)="openDialog(result.imdbID)">More
+          Details</button>
+        &nbsp;
+        <a [routerLink]="['/detail', result.imdbID]" class="btn btn-custom margin-t-30 waves-effect waves-light">More
+          Details - Separate Page<i class="mdi mdi-arrow-right"></i></a>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+
   </div>
+
+
+
 </section>
 
 <!-- ngIf declarative approach to error modal-->

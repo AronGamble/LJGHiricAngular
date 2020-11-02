@@ -56,16 +56,16 @@ export class HeaderComponent implements AfterViewInit {
 
   ngAfterViewInit() {
 
-    let sections: NodeListOf<Element> = document.querySelectorAll(".section");
-    let self = this;
+    //let sections: NodeListOf<Element> = document.querySelectorAll(".section");
+    //let self = this;
 
-    Array.prototype.forEach.call(sections, function (e) {
-      self.sections[e.id] = parseFloat(e.offsetTop);
-    });
+    //Array.prototype.forEach.call(sections, function (e) {
+    //  self.sections[e.id] = parseFloat(e.offsetTop);
+    //});
 
-console.log(JSON.stringify(self.sections));
+//console.log(JSON.stringify(self.sections));
 
-    this.scrollSpyService.getObservable('window').subscribe((e: any) => {
+    /* this.scrollSpyService.getObservable('window').subscribe((e: any) => {
       let scrollPosition = document.documentElement.scrollTop;
 
       for (let menu in this.sections) {
@@ -97,7 +97,7 @@ console.log(JSON.stringify(self.sections));
           }
         }
       }
-    });
+    }); */
   }
 
   clearMenu(color) {

@@ -2,9 +2,14 @@ import { Component, OnInit, ComponentFactoryResolver, ViewChild, OnDestroy } fro
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ContactService } from 'src/app/services/contact/contact.service';
 import { Observable, of, Subject, Subscription } from 'rxjs';
-import { MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { AlertComponent } from 'src/app/shared/alert.component';
 import { PlaceholderDirective } from 'src/app/directives/placeholderdirective';
+import { Movie } from 'src/app/models/movie';
+import { map } from 'rxjs/operators';
+import { eventNames } from 'process';
+import { DetailDialog } from './detail-dialog';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-contact',
@@ -14,30 +19,56 @@ import { PlaceholderDirective } from 'src/app/directives/placeholderdirective';
 export class ContactComponent implements OnInit, OnDestroy {
 
   // Get the element where the directive has been attached in the DOM
-   @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
+  @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
 
-   // Store a reference to the close observable on the alert component
-   private closeSub: Subscription;
+  // Store a reference to the close observable on the alert component
+  private closeSub: Subscription;
 
   constructor(
+    public dialog: MatDialog,
     private componentFactoryResolver: ComponentFactoryResolver,
     private fb: FormBuilder,
     private contactService: ContactService,
     private snackBar: MatSnackBar) { }
 
-  error = false;
+  ////
+  length = 10;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
 
-  contactForm = this.fb.group({
+  // MatPaginator Output
+  pageEvent: PageEvent;
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    if (setPageSizeOptionsInput) {
+      this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+    }
+  }
+  ////
+
+  topBuzz(event: PageEvent) {
+    this.contactService.performMovieSearchPaged(this.searchForm.value, event.pageIndex + 1).subscribe(
+      (data) => {
+        this.results = data.Search;
+      }
+    )
+  }
+
+  error = false;
+  results: Movie[];
+  pages: number[] = [];
+  movieItem: Movie;
+  hideNoResults: boolean = false;
+
+  searchForm = this.fb.group({
     name: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    subject: ['', Validators.required],
-    comments: ['', Validators.required]
+    page: ['']
+
   });
 
-  get name() { return this.contactForm.get('name'); }
-  get email() { return this.contactForm.get('email'); }
-  get subject() { return this.contactForm.get('subject'); }
-  get comments() { return this.contactForm.get('comments'); }
+  get name() { return this.searchForm.get('name'); }
+  get page() { return this.searchForm.get('page'); }
+
 
   ngOnInit() {
   }
@@ -82,17 +113,93 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   }
 
-  onSubmit() {
+  showPager(): boolean {
+
+    if (this.results != undefined && this.results.length > 0) {
+
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  openDialog(id: string): void {
+
+    this.contactService.getMovieItem(id).subscribe(
+      (movieItem) => {
+
+        const dialogRef = this.dialog.open(DetailDialog, {
+          width: '500px',
+          data: { mItem: movieItem }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+        });
+
+      }
+    )
+
+  }
+
+
+
+  openedPanel(id: string) {
+
+    this.contactService.getMovieItem(id).subscribe(
+      (data) => {
+        this.movieItem = data;
+      }
+    )
+  }
+
+
+  refreshPage() {
 
     // *** The error flag would display the ngIf declarative approach modal
-    this.error = true;
+    this.error = false;
 
-    this.contactService.submitContact(this.contactForm.value).subscribe(
-      () => {
+    this.contactService.performMovieSearch(this.searchForm.value).subscribe(
+      (data) => {
+
         this.error = false;
+        this.results = data.Search;
+        this.pages = [];
 
-        this.snackBar.open('Thankyou, we\'ll be in touch soon', null, { duration: 5000, horizontalPosition: 'right' });
-        this.contactForm.reset();
+        let noOfPages = 0;
+
+        // If there has been a movie(s) found
+        if (data.Response == "True") {
+
+          this.length = data.totalResults;
+          
+          this.hideNoResults = false;
+
+          if (this.results.length > 0) {
+            noOfPages = Math.round(data.totalResults / 10);
+          }
+
+          if (noOfPages > 0) {
+            for (let x = 1; x < noOfPages + 1; x++) {
+              this.pages.push(x);
+            }
+          }
+
+
+          if (this.page.value > 0) {
+            this.snackBar.open('Showing page ' + this.page.value + ' of ' + noOfPages, null, { duration: 5000, horizontalPosition: 'right' });
+          }
+        }
+        else {
+
+          // No movies found
+          this.searchForm.controls["page"].reset();
+          this.pages = [];
+          this.hideNoResults = true;
+          this.snackBar.open('No Movies Found!!', null, { duration: 5000, horizontalPosition: 'right' });
+
+        }
       },
       () => {
 
@@ -102,11 +209,17 @@ export class ContactComponent implements OnInit, OnDestroy {
         this.error = true;
       },
       () => {
-
       }
-
     );
 
   }
 
+  onSubmit() {
+
+    // New search so clear the previous search page data
+    this.searchForm.controls["page"].reset();
+    this.pages = [];
+    this.refreshPage();
+
+  }
 }

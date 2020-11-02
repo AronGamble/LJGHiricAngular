@@ -29,6 +29,7 @@ import { SharedModule } from './shared/shared.module';
 import { AlertComponent } from './shared/alert.component';
 import { DirectivesModule } from './directives/directives.module';
 
+
 registerLocaleData(localeUk);
 
 @NgModule({
@@ -57,7 +58,8 @@ registerLocaleData(localeUk);
     SecretModule,
     SharedModule,
     DirectivesModule,
-    TrainingModule,  // Add this only in the root module
+    TrainingModule, 
+     // Add this only in the root module
   ],
   exports: [],
   providers: [

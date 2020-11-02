@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{data.mItem.Title}} - {{data.mItem.Year}}</h1>
+<div mat-dialog-content>
+    <div>{{data.mItem.Plot}}</div>
+    <br />
+    <div>Director: {{data.mItem.Director}}</div>
+    <br />
+    <div>Genre: {{data.mItem.Genre}}</div>
+    <br />
+    <div>Rated: {{data.mItem.Rated}}</div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data.mItem.Title" cdkFocusInitial>Ok</button>
+</div>

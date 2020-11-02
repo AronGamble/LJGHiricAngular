@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DetailComponent } from 'src/app/movies/detail/detail.component';
 
 import { Index1Component } from './index1/index1.component';
 import { Index2Component } from './index2/index2.component';
@@ -10,6 +11,7 @@ import { Index6Component } from './index6/index6.component';
 import { Index7Component } from './index7/index7.component';
 import { Index8Component } from './index8/index8.component';
 import { Index9Component } from './index9/index9.component';
+import { MoviesResolverService } from '../../movies/detail/movies-resolver.service'
 
 const routes: Routes = [
   { path: '', component: Index5Component },
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'index7', component: Index7Component },
   { path: 'index8', component: Index8Component },
   { path: 'index9', component: Index9Component },
+  { path: 'detail/:id', component: DetailComponent, resolve: { movieItem: MoviesResolverService } },
+
 ];
 
 @NgModule({

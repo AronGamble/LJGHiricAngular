@@ -18,9 +18,9 @@ export class ContractComponent implements OnInit {
 
   ngOnInit() {
 
-    this.historyService.getHistory().subscribe((data) => {
-      this.historyItems = data.sort((a, b) => +a.id - +b.id);
-    },
+   /*  // this.historyService.getHistory().subscribe((data) => {
+      // this.historyItems = data.sort((a, b) => +a.id - +b.id);
+    // },
     err => {
       console.log(err);
       this.errorMessage = err;
@@ -28,7 +28,7 @@ export class ContractComponent implements OnInit {
 
       },
       () => {}
-    );
+    ); */
 
   }
 

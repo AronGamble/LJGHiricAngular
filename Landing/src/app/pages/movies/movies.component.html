@@ -57,14 +57,14 @@
     </div>
 
     <mat-paginator [length]="length" [pageSize]="10" [pageSizeOptions]="pageSizeOptions"
-      (page)="topBuzz($event)" hidePageSize="true">
+      (page)="pageChanged($event)" hidePageSize="true">
     </mat-paginator>
 
 
     <h2 *ngIf="hideNoResults">No Movies Found!!</h2>
 
     <mat-accordion class="example-headers-align">
-      <mat-expansion-panel *ngFor="let result of results" (opened)="openedPanel(result.imdbID)">
+      <mat-expansion-panel *ngFor="let result of results" >
         <mat-expansion-panel-header>
         </mat-expansion-panel-header>
         <mat-expansion-panel-header>

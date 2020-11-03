@@ -11,29 +11,27 @@ import { SearchItem } from 'src/app/models/search-item';
 @Injectable({
   providedIn: 'root'
 })
-export class ContactService {
+export class MoviesService {
 
-  private CONTACT_URL = environment.CONTACT_URL + environment.MOVIE_API_KEY;
+  private MOVIE_API_URL = environment.MOVIE_URL + environment.MOVIE_API_KEY;
 
   constructor(private http: HttpClient) { }
 
   performMovieSearch(searchItem: SearchItem) {
 
-    return this.http.get<any>(this.CONTACT_URL + '&s=' + searchItem.name + "&page=" + searchItem.page);
+    return this.http.get<any>(this.MOVIE_API_URL + '&s=' + searchItem.name + "&page=" + searchItem.page);
 
   }
 
   performMovieSearchPaged(searchItem: SearchItem, pageIndex: number) {
 
-    return this.http.get<any>(this.CONTACT_URL + '&s=' + searchItem.name + "&page=" + pageIndex);
+    return this.http.get<any>(this.MOVIE_API_URL + '&s=' + searchItem.name + "&page=" + pageIndex);
 
   }
 
-
-
   getMovieItem(id: string): Observable<Movie> {
 
-    return this.http.get<Movie>(this.CONTACT_URL + '&i=' + id + "&plot=full").pipe(
+    return this.http.get<Movie>(this.MOVIE_API_URL + '&i=' + id + "&plot=full").pipe(
       map(res => {
         return new Movie(
           res.Title,

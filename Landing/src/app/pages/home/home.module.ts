@@ -9,7 +9,7 @@ import { GetstartComponent } from '../getstart/getstart.component';
 import { BlogComponent } from '../blog/blog.component';
 import { FeatureComponent } from '../feature/feature.component';
 import { ClientComponent } from '../client/client.component';
-import { ContactComponent } from '../contact/contact.component';
+import { MoviesComponent } from '../movies/movies.component';
 import { TestiComponent } from '../testi/testi.component';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { ParticlesModule } from 'angular-particle';
@@ -39,7 +39,7 @@ import { DetailComponent } from '../../movies/detail/detail.component';
 
 @NgModule({
   declarations: [Index1Component, ServicesComponent, AboutComponent, DescriptionComponent, PricingComponent,
-    GetstartComponent, BlogComponent, ContactComponent, TestiComponent,
+    GetstartComponent, BlogComponent, MoviesComponent, TestiComponent,
     Index2Component, Index3Component, Index4Component, ClientComponent, FeatureComponent, Index5Component, Index6Component,
     Index7Component, Index8Component, Index9Component, DetailComponent],
   imports: [

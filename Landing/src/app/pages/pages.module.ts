@@ -16,7 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 
 import { SharedModule } from '../shared/shared.module';
 import { AlertComponent } from '../shared/alert.component';
-import { DetailDialog } from './contact/detail-dialog';
+import { DetailDialog } from './movies/detail-dialog';
 
 
 @NgModule({

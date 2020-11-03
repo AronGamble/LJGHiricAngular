@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Movie } from 'src/app/models/movie';
-import { ContactService } from 'src/app/services/contact/contact.service';
+import { MoviesService } from 'src/app/services/movies/movies.service';
 
 @Component({
   selector: 'app-detail',
@@ -13,7 +13,7 @@ export class DetailComponent implements OnInit {
   id: string;
   movieItem: Movie;
 
-  constructor(private route: ActivatedRoute, private historyService: ContactService, private router: Router) {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {

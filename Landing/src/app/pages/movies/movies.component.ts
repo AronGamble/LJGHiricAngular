@@ -1,22 +1,20 @@
 import { Component, OnInit, ComponentFactoryResolver, ViewChild, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { ContactService } from 'src/app/services/contact/contact.service';
-import { Observable, of, Subject, Subscription } from 'rxjs';
+import { MoviesService } from 'src/app/services/movies/movies.service';
+import { Subscription } from 'rxjs';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { AlertComponent } from 'src/app/shared/alert.component';
 import { PlaceholderDirective } from 'src/app/directives/placeholderdirective';
 import { Movie } from 'src/app/models/movie';
-import { map } from 'rxjs/operators';
-import { eventNames } from 'process';
 import { DetailDialog } from './detail-dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  selector: 'app-movies',
+  templateUrl: './movies.component.html',
+  styleUrls: ['./movies.component.css']
 })
-export class ContactComponent implements OnInit, OnDestroy {
+export class MoviesComponent implements OnInit, OnDestroy {
 
   // Get the element where the directive has been attached in the DOM
   @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
@@ -29,10 +27,10 @@ export class ContactComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private componentFactoryResolver: ComponentFactoryResolver,
     private fb: FormBuilder,
-    private contactService: ContactService,
+    private moviesService: MoviesService,
     private snackBar: MatSnackBar) { }
 
-  ////
+
   length = 10;
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
@@ -45,10 +43,12 @@ export class ContactComponent implements OnInit, OnDestroy {
       this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
     }
   }
-  ////
 
-  topBuzz(event: PageEvent) {
-    this.contactService.performMovieSearchPaged(this.searchForm.value, event.pageIndex + 1).subscribe(
+  /* Handles the event fired when the user paginates */
+  pageChanged(event: PageEvent) {
+
+    // Retrieve the selected index page based on the selected index in the Material paginator
+    this.moviesService.performMovieSearchPaged(this.searchForm.value, event.pageIndex + 1).subscribe(
       (data) => {
         this.results = data.Search;
       }
@@ -61,12 +61,14 @@ export class ContactComponent implements OnInit, OnDestroy {
   movieItem: Movie;
   hideNoResults: boolean = false;
 
+  /* The search form - new search options would be added here */
   searchForm = this.fb.group({
     name: ['', Validators.required],
     page: ['']
 
   });
 
+  // Getters for form fields
   get name() { return this.searchForm.get('name'); }
   get page() { return this.searchForm.get('page'); }
 
@@ -114,6 +116,7 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   }
 
+
   showPager(): boolean {
 
     if (this.results != undefined && this.results.length > 0) {
@@ -125,9 +128,11 @@ export class ContactComponent implements OnInit, OnDestroy {
     }
   }
 
+
   openDialog(id: string): void {
 
-    this.contactService.getMovieItem(id).subscribe(
+    // Retrieve the full movie data for the selected movie and pass it to the dialog component and open it.
+    this.moviesService.getMovieItem(id).subscribe(
       (movieItem) => {
 
         const dialogRef = this.dialog.open(DetailDialog, {
@@ -145,23 +150,12 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
 
 
-
-  openedPanel(id: string) {
-
-    this.contactService.getMovieItem(id).subscribe(
-      (data) => {
-        this.movieItem = data;
-      }
-    )
-  }
-
-
   refreshPage() {
 
     // *** The error flag would display the ngIf declarative approach modal
     this.error = false;
 
-    this.contactService.performMovieSearch(this.searchForm.value).subscribe(
+    this.moviesService.performMovieSearch(this.searchForm.value).subscribe(
       (data) => {
 
         this.error = false;
